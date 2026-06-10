@@ -1,0 +1,140 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #050505;
+  --color-foreground: #ffffff;
+  --color-surface: #111111;
+  --color-primary-crimson: #C62828;
+  --color-secondary-crimson: #E53935;
+  --color-primary-indigo: #283593;
+  --color-secondary-indigo: #3F51B5;
+  --color-text-primary: #FFFFFF;
+  --color-text-secondary: #A1A1AA;
+  --font-sans: var(--font-inter), sans-serif;
+  --font-display: var(--font-outfit), sans-serif;
+}
+
+:root {
+  --background: #050505;
+  --foreground: #ffffff;
+  --surface: #111111;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  overflow-x: hidden;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+}
+
+/* Custom Utilities */
+
+.glass-card {
+  background: rgba(17, 17, 17, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.03); /* Thinner border for high luxury look */
+  box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.7);
+}
+
+.glass-card-hover {
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-card-hover:hover {
+  border-color: rgba(229, 57, 53, 0.2); /* Very soft Crimson highlight */
+  box-shadow: 0 0 40px rgba(63, 81, 181, 0.08);
+  transform: translateY(-1px);
+}
+
+.glow-indigo {
+  filter: drop-shadow(0 0 10px rgba(63, 81, 181, 0.25)); /* Softer glow */
+}
+
+.glow-crimson {
+  filter: drop-shadow(0 0 10px rgba(229, 57, 53, 0.25)); /* Softer glow */
+}
+
+.text-glow-indigo {
+  text-shadow: 0 0 15px rgba(63, 81, 181, 0.3);
+}
+
+.text-glow-crimson {
+  text-shadow: 0 0 15px rgba(229, 57, 53, 0.35);
+}
+
+.indigo-radial-glow {
+  background: radial-gradient(circle 700px at var(--x, 50%) var(--y, 50%), rgba(63, 81, 181, 0.07), transparent 85%);
+}
+
+.crimson-radial-glow {
+  background: radial-gradient(circle 500px at var(--x, 50%) var(--y, 50%), rgba(229, 57, 53, 0.05), transparent 85%);
+}
+
+.grid-background {
+  background-size: 60px 60px;
+  background-image: 
+    linear-gradient(to right, rgba(63, 81, 181, 0.012) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(63, 81, 181, 0.012) 1px, transparent 1px);
+}
+
+/* Scrollbar styles */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #050505;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(63, 81, 181, 0.18);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(229, 57, 53, 0.3);
+}
+
+/* Animations - slower, more elegant transitions */
+@keyframes pulse-slow {
+  0%, 100% {
+    opacity: 0.15;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.3;
+    transform: scale(1.03);
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 10s infinite ease-in-out;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.animate-float {
+  animation: float 8s infinite ease-in-out;
+}
+
+@keyframes flow-line {
+  0% {
+    stroke-dashoffset: 20;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+.animate-flow-line {
+  stroke-dasharray: 4, 6;
+  animation: flow-line 2s infinite linear;
+}
